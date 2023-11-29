@@ -1,0 +1,55 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+.LoginPage{
+  width: 100%;
+  height: 100vh;
+  background-color: #64CCC5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  .LeftComponent{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .LeftComponentImg{
+      height: 30%;
+    }
+    .LeftComponent_Text{
+      color:#BC5244;
+      font-family: 'Anton', sans-serif;
+      font-size: 300%;
+      margin-top: 10%;
+    }
+  }
+  .RightComponent{
+    background-color: white;
+    width: 60%;
+    height: 100%;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .RightComponent_Form_Name{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: end;
+      font-size: 250%;
+      color: #176B87;
+      font-family: 'Anton', sans-serif;
+      height: 20%;
+    }
+    .RightComponent_Login_Form{
+      height: 80%;
+      width: 100%;
+    }
+  }
+}

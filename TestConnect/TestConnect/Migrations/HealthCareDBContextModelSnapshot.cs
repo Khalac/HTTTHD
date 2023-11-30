@@ -8,7 +8,7 @@ using TestConnect.Data;
 
 #nullable disable
 
-namespace TestConnect.Migrations
+namespace _20HTTT_1.Migrations
 {
     [DbContext(typeof(HealthCareDBContext))]
     partial class HealthCareDBContextModelSnapshot : ModelSnapshot

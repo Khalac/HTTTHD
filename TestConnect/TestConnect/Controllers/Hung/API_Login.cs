@@ -5,7 +5,7 @@ using TestConnect.Data;
 
 namespace _20HTTT_1.Controllers.Hung
 {
-    [Route("api/[controller]")]
+    [Route("api/{controller}")]
     [ApiController]
     public class API_Login : ControllerBase
     {

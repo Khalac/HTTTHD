@@ -3,5 +3,7 @@
     public class DTO_Login_Result
     {
         public Boolean OnSuccess { get; set; }  
+
+        public string UserId { get; set; }  
     }
 }

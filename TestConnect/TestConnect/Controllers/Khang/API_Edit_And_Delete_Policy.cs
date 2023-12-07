@@ -21,7 +21,7 @@ namespace _20HTTT_1.Controllers.Khang
         }
 
         [HttpPut]
-        [Route("api/policies/{policyId}")]
+        [Route("api/policies/{policyID}")]
 
         public IActionResult EditPolicy(Guid policyID, [FromBody] DTO_Policy policydto)
         {

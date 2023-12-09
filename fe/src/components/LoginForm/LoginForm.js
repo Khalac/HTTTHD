@@ -5,9 +5,12 @@ import "./LoginForm.scss";
 import { GoPerson, GoLock } from "react-icons/go";
 import { notification } from "antd"
 
+import { useNavigate } from "react-router-dom";
+
 function LoginForm() {
-  const [user_Name, setuser_Name] = useState();
-  const [password, setPassword] = useState();
+  const nav = useNavigate();
+  const [user_Name, setuser_Name] = useState("");
+  const [password, setPassword] = useState("");
   const LoginSuccess = (type) => {
     notification[type]({
       message: "Success",
@@ -20,11 +23,17 @@ function LoginForm() {
       description: "Your Username or Password is incorrect!!!",
     });
   }
+
   const LogIn = async () => {
     await axios.post("https://localhost:7011/api/API_Login/LoginCheck", { user_Name: user_Name, password: password })
       .then((res) => {
         if (res.data.onSuccess) {
-          LoginSuccess("success")
+          if (user_Name.includes("NV")) {
+            nav("/MainPage_NV", { state: { userId: res.data.userId, LogIn: true } });
+          }
+          else {
+            nav("MainPage_KH", { state: { userId: res.data.userId, LogIn: true } })
+          }
         }
         else {
           LoginFailed("error")

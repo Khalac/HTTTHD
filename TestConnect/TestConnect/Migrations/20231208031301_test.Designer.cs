@@ -12,8 +12,8 @@ using TestConnect.Data;
 namespace _20HTTT_1.Migrations
 {
     [DbContext(typeof(HealthCareDBContext))]
-    [Migration("20231130165627_Test")]
-    partial class Test
+    [Migration("20231208031301_test")]
+    partial class test
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

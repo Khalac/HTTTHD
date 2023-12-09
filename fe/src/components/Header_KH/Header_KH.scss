@@ -1,0 +1,19 @@
+.Header_KH{
+    height: 100%;
+    width: 100%;
+    background-color: #64CCC5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    .Header_KH_UserName{
+        font-size: 150%;
+        font-family: 'Anton', sans-serif;
+        color: #176B87;
+    }
+    .Header_KH_Page{
+        font-family: 'Archivo Narrow', sans-serif;
+        color: #053B50;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,124 @@
+.DSCS_KH{
+    height: 100%;
+    width: 60%;
+    .DSCS_KH_DS{
+        font-family: 'Anton', sans-serif;
+        color: #176B87;
+        height: 15%;
+        font-size: 120%;
+        display: flex;
+        align-items: center;
+    
+    }
+    .DSCS_KH_DSCS{
+        height: 80%;
+        width: 100%;
+        background-color: #64CCC5;
+        border-radius: 20px;
+        
+        .DSCS_KH_DSCS_LookUp{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 10%;
+            position: relative;
+            .DSCS_KH_DSCS_LookUp_Input{
+                width: 94%;
+                padding-left: 5%;
+                height: 85%;
+                border: none;
+                border-top-left-radius:19px;
+                border-top-right-radius: 19px;
+                font-family: 'Archivo Narrow', sans-serif;
+                &:focus{
+                    outline: none;
+                  }
+            }
+            .DSCS_KH_DSCS_LookUp_Icon{
+                position: absolute;
+                background-color: #176B87;
+                height: 93%;
+                border-top-right-radius: 20px;
+                width: 7%;
+                right: 0.2%;
+                cursor: pointer;
+            }
+            
+        }
+        .DSCS_KHDSCS_DS{
+            width: 100%;
+            height: 90%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+            overflow-y: scroll;
+         
+            .DSCS_ChiTiet{
+                min-height: 30%;
+                width: 90%;
+                background-color: white;
+                margin-bottom: 5%;
+                margin-top: 5%;
+                border-radius: 20px;
+                padding-left: 3%;
+                position: relative;
+                .DSCS_ChiTiet_Ten{
+                    height: 50%;
+                    width: 100%;
+                    display: flex;
+                    
+                    align-items: center;
+                    font-family: 'Archivo Narrow', sans-serif;
+                    color: #000000;
+                }
+                .DSCS_ChiTiet_Des{
+                    height: 50%;
+                    width: 100%;
+                    font-family: 'Archivo Narrow', sans-serif;
+                    color: #918A8A;
+                }
+                .DSCS_ChiTiet_Button_DangKy{
+                    position: absolute;
+                    right: 5%;
+                    top: 13%;
+                    color: white;
+                    width: 100px;
+                    height: 30%;
+                    background-color: #176B87;
+                    border: 2px solid #176B87;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    font-family: 'Archivo Narrow', sans-serif;
+                    &:hover{
+                        background-color: #3ba3c5;
+                    }
+                }
+                .DSCS_ChiTiet_Button_ChiTiet{
+                    position: absolute;
+                    right: 5%;
+                    bottom: 13%;
+                    color: black;
+                    width: 100px;
+                    height: 30%;
+                    background-color: white;
+                    border: 2px solid #64CCC5;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    font-family: 'Archivo Narrow', sans-serif;
+                    &:hover{
+                        background-color: #3ba3c5;
+                    }
+                }
+            }
+        }
+    }
+}

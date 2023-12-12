@@ -39,17 +39,16 @@ namespace _20HTTT_1.Controllers.Hung
                 var Get_UserID = healthCareDBContext.Nhan_Vien.FromSqlRaw("SELECT * FROM Nhan_Vien WHERE NhanVien_Login_id = {0}", UserLoginId).ToList();
                 result.OnSuccess = true;
                 result.UserId = Get_UserID[0].Id_NhanVien.ToString();
+                result.Type = Check_UserName_Password.Type;
                 return Ok(result);
             }
             else {
                 var Get_UserID = healthCareDBContext.Khach_Hang.FromSqlRaw("SELECT * FROM Khach_Hang WHERE User_Login_id = {0}", UserLoginId).ToList();
                 result.OnSuccess = true;
                 result.UserId = Get_UserID[0].Id_Khach.ToString();
+                result.Type = Check_UserName_Password.Type;
                 return Ok(result);
             }
-
-
-         
         }
     }
 }

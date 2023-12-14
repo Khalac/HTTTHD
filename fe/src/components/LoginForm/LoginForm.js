@@ -11,6 +11,11 @@ function LoginForm() {
   const nav = useNavigate();
   const [user_Name, setuser_Name] = useState("");
   const [password, setPassword] = useState("");
+
+  function goToRegister(){
+    nav("/Register")
+  }
+
   const LoginSuccess = (type) => {
     notification[type]({
       message: "Success",
@@ -28,7 +33,8 @@ function LoginForm() {
     await axios.post("https://localhost:7011/api/API_Login/LoginCheck", { user_Name: user_Name, password: password })
       .then((res) => {
         if (res.data.onSuccess) {
-          if (user_Name.includes("NV")) {
+          console.log(res.data)
+          if (res.data.type === "NV") {
             nav("/MainPage_NV", { state: { userId: res.data.userId, LogIn: true } });
           }
           else {
@@ -57,7 +63,7 @@ function LoginForm() {
       </div>
       <div className="LoginForm_Register_Text">Bạn chưa có tài khoản ?</div>
       <div className="LoginForm_Button_Register">
-        <div className="Button_Register">Đăng ký</div>
+        <div className="Button_Register" onClick={() => goToRegister()}>Đăng ký</div>
       </div>
     </div>
   );

@@ -7,11 +7,14 @@ function Header_NV() {
     const goToMainPage = () => {
         nav('/MainPage_NV')
     }
+    const goToThemCS = () => {
+        nav('/MainPage_NV/ThemCS')
+    }
     return (
         <div className="Header_NV">
             <div className="Header_NV_UserName">NV01: Nguyen Van A</div>
             <div className="Header_NV_Page" onClick={() => goToMainPage()}>Trang chủ</div>
-            <div className="Header_NV_Page">Tạo chính sách</div>
+            <div className="Header_NV_Page" onClick={() => goToThemCS()}>Tạo chính sách</div>
             <div className="Header_NV_Page">Xét duyệt</div>
         </div>
     )

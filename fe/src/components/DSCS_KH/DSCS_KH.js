@@ -12,6 +12,18 @@ function DSCS_KH({ state }) {
     const [active, setActive] = useState("0")
     const [DSTemp, setDSTemp] = useState()
 
+
+    const removeExtraSpace = ((s) => s.trim().split(/ +/).join(' '))
+
+    const capitalizeWords = (str) => {
+        var temp = removeExtraSpace(str)
+        return temp
+            .toLowerCase()
+            .split(' ')
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    };
+
     function filtered() {
 
         if (ChinhSach === "") {
@@ -22,15 +34,17 @@ function DSCS_KH({ state }) {
         else {
             setActive("1")
             var temp = []
+            var cs = capitalizeWords(ChinhSach)
             for (var i = 0; i < DanhSachCS.length; ++i) {
-                DanhSachCS[i].name.toLowerCase();
-                if (DanhSachCS[i].name.includes(ChinhSach)) {
+                if (DanhSachCS[i].name.includes(cs.trim())) {
                     temp.push(DanhSachCS[i])
                 }
             }
             setDSTemp(temp)
             console.log(temp)
         }
+
+
 
 
     }
@@ -44,7 +58,7 @@ function DSCS_KH({ state }) {
             })
             .catch((err) => console.log(err))
 
-    }, [])
+    }, [DanhSachCS])
     return (
         <div className="DSCS_KH">
             <div className="DSCS_KH_DS">

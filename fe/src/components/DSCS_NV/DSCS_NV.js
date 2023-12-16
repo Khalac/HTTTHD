@@ -7,16 +7,45 @@ import { useNavigate } from "react-router-dom";
 
 import axios from "axios"
 
+import { notification } from "antd"
+
 function DSCS_NV({ state }) {
+
+
+    const DeleteCSSuccess = (type) => {
+        notification[type]({
+            message: "Success",
+            description: "Delete successfully!!!",
+        });
+    }
+    const DeleteCSFailed = (type) => {
+        notification[type]({
+            message: "Error",
+            description: "Delete Failed!!!",
+        });
+    }
+
     const [ChinhSach, setChinhSach] = useState("")
     const [DanhSachCS, setDSCS] = useState()
     const [active, setActive] = useState("0")
     const [DSTemp, setDSTemp] = useState()
 
+    const removeExtraSpace = ((s) => s.trim().split(/ +/).join(' '))
+
+    const capitalizeWords = (str) => {
+        var temp = removeExtraSpace(str)
+        return temp
+            .toLowerCase()
+            .split(' ')
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    };
+
+
+
 
     const nav = useNavigate()
     function GoToCSCS(idChinhSach) {
-
         nav('/MainPage_NV/ChinhSuaCS', { state: { idChinhSach: idChinhSach } })
     }
 
@@ -30,8 +59,9 @@ function DSCS_NV({ state }) {
         else {
             setActive("1")
             var temp = []
+            var cs = capitalizeWords(ChinhSach)
             for (var i = 0; i < DanhSachCS.length; ++i) {
-                if (DanhSachCS[i].name.includes(ChinhSach)) {
+                if (DanhSachCS[i].name.includes(cs.trim())) {
                     temp.push(DanhSachCS[i])
                 }
             }
@@ -42,17 +72,12 @@ function DSCS_NV({ state }) {
 
     }
     function XoaCS(idChinhSach) {
-        for (var i = 0; i < DanhSachCS.length; ++i) {
-            DanhSachCS[i].name.toLowerCase();
-            if (DanhSachCS[i].idChinhSach === idChinhSach) {
-                var temp = DanhSachCS.splice(i, 1)
-            }
-        }
+
         axios.delete(`https://localhost:7011/api/API_Policies/api/policies/${idChinhSach}`)
             .then((res) => {
-                console.log(res)
+                DeleteCSSuccess("success")
             })
-            .catch((err) => console.log(err))
+            .catch((err) => DeleteCSFailed('error'))
     }
 
 

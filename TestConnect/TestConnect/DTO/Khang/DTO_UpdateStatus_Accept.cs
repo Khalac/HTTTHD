@@ -4,6 +4,6 @@
     {
         public Guid Id {  get; set; }
         public string Status { get; set; }
-
+        public Guid Id_Chinhsach { get; set; }
     }
 }

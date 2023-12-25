@@ -44,6 +44,7 @@ namespace _20HTTT_1.Controllers.Khang
                 existingPolicy.MaximumAge = policydto.MaximumAge;
                 existingPolicy.Description = policydto.Description;
                 existingPolicy.MonthlyPay = policydto.MonthlyPay;
+                existingPolicy.Status = policydto.Status;
 
                 healthCareDBContext.SaveChanges();
 
@@ -54,7 +55,8 @@ namespace _20HTTT_1.Controllers.Khang
                     MinimumAge = existingPolicy.MinimumAge,
                     MaximumAge = existingPolicy.MaximumAge,
                     Description = existingPolicy.Description,
-                    MonthlyPay = existingPolicy.MonthlyPay
+                    MonthlyPay = existingPolicy.MonthlyPay,
+                    Status = existingPolicy.Status
                 };
 
                 return Ok(result);
@@ -77,10 +79,14 @@ namespace _20HTTT_1.Controllers.Khang
 
                 if (policy == null)
                 {
-                    return NotFound("Chính sách không tồn tại.");
+                    return BadRequest("Not found!");
+                }
+                else if (policy.Status == "Active")
+                {
+                    policy.Status = "Disabled";
                 }
 
-                healthCareDBContext.Chinh_Sach.Remove(policy);
+                //healthCareDBContext.Chinh_Sach.Remove(policy);
                 healthCareDBContext.SaveChanges();
 
                 var result = new DTO_Results
@@ -90,7 +96,8 @@ namespace _20HTTT_1.Controllers.Khang
                     MinimumAge = policy.MinimumAge,
                     MaximumAge = policy.MaximumAge,
                     Description = policy.Description,
-                    MonthlyPay = policy.MonthlyPay
+                    MonthlyPay = policy.MonthlyPay,
+                    Status = policy.Status
                 };
 
                 return Ok(result);

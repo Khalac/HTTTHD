@@ -27,14 +27,28 @@ namespace _20HTTT_1.Controllers.Khang
             {
                 var existingRow = healthCareDBContext.Khach_Hang_Chinh_Sach.FirstOrDefault(row => row.Id == dtoUpdateDeny.Id);
 
+                var existingIDPolicy = healthCareDBContext.Chinh_Sach.FirstOrDefault(row => row.Id_ChinhSach == dtoUpdateDeny.Id_Chinhsach);
+
                 if (existingRow == null)
                 {
                     return BadRequest("Not exist!");
                 }
+                else
+                {
+                    existingRow.Status = "Deny";
 
-                existingRow.Status = "Deny";
+                    healthCareDBContext.SaveChanges();
+                }
 
-                healthCareDBContext.SaveChanges();
+                if (existingIDPolicy == null)
+                {
+                    return BadRequest("Policy not found!");
+                }
+                else if (existingIDPolicy.Status == "Disabled")
+                {
+                    existingRow.Status = "Disabled";
+                    healthCareDBContext.SaveChanges();
+                }
 
                 return Ok("Update status complete!");
             }

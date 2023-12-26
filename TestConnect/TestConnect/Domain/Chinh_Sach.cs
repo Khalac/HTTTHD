@@ -12,5 +12,7 @@ namespace TestConnect.Domain
         public int MaximumAge { get; set; } 
         public string Description { get; set; } 
         public long MonthlyPay {  get; set; }
+        public string Status { get; set; }
+
     }
 }

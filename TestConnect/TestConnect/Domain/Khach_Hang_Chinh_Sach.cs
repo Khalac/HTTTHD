@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace TestConnect.Domain
 {
@@ -9,7 +10,7 @@ namespace TestConnect.Domain
         public Guid Id { get; set; }
         public string Status { get; set; }
         public DateTime BuyDate { get; set; }
-        
+
 
         [ForeignKey("Id_Khach")]
         public Khach_Hang Khach_Hang { get; set; }

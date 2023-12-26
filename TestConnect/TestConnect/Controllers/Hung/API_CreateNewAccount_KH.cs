@@ -9,7 +9,7 @@ using TestConnect.Domain;
 
 namespace _20HTTT_1.Controllers.Hung
 {
-    [Route("api/[controller]")]
+[Route("api/[controller]")]
 [ApiController]
 public class API_CreateNewAccount_KH : ControllerBase
 {

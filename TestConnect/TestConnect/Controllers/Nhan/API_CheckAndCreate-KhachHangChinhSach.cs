@@ -1,4 +1,4 @@
-﻿using _20HTTT_1.DTO.Nhan;
+using _20HTTT_1.DTO.Nhan;
 using System;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
@@ -12,30 +12,34 @@ namespace _20HTTT_1.Controllers.Nhan
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class API_CheckExist : ControllerBase
+    public class API_CheckAndCreate_KhachHangChinhSach : ControllerBase
     {
         private readonly HealthCareDBContext healthCareDBContext;
 
-        public API_CheckExist(HealthCareDBContext healthCareDBContext)
+        public API_CheckAndCreate_KhachHangChinhSach(HealthCareDBContext healthCareDBContext)
         {
             this.healthCareDBContext = healthCareDBContext;
         }
 
         [HttpPost]
-        [Route("check-and-create")]
-        public IActionResult CheckAndCreate([FromBody] DTO_CheckExist dtoCheckExist)
+        [Route("check-and-create-Khachhangchinhsach")]
+        public IActionResult CheckAndCreate([FromBody] DTO_CheckAndCreate_KhachHangChinhSach dtoCheckExist)
         {
             try
             {
-                // Kiểm tra sự tồn tại của dòng trong KhachHang_ChinhSach
-                var existingRow = healthCareDBContext.Khach_Hang_Chinh_Sach
-                    .Where(row => row.Id_Khach == dtoCheckExist.Id_Khach && row.Id_ChinhSach == dtoCheckExist.Id_ChinhSach)
-                    .FirstOrDefault();
+                var temp_ChinhSach = healthCareDBContext.Chinh_Sach.FirstOrDefault(x => x.Id_ChinhSach == dtoCheckExist.Id_ChinhSach);
+                var temp_KhachHang = healthCareDBContext.Khach_Hang.FirstOrDefault(x => x.Id_Khach == dtoCheckExist.Id_Khach);
 
-                if (existingRow != null)
+                //Kiểm tra sự tồn tại của dòng trong KhachHang_ChinhSach
+                var existingRow = healthCareDBContext.Khach_Hang_Chinh_Sach
+                   .Where(row => row.Khach_Hang == temp_KhachHang && row.Chinh_Sach == temp_ChinhSach)
+                   .FirstOrDefault();
+
+                bool isExistingRow = existingRow != null;
+
+                if (isExistingRow && (existingRow.Status == "Using" || existingRow.Status == "Waiting"))
                 {
-                    // Nếu dòng đã tồn tại, cập nhật Status thành "Waiting"
-                    return BadRequest("Dòng dữ liệu đã tồn tại trong bảng Khach_Hang_Chinh_Sach.");
+                    return BadRequest("Dòng dữ liệu đã tồn tại trong bảng Khach_Hang_Chinh_Sach và có trạng thái là 'Using' hoặc 'Waiting'.");
                 }
                 else
                 {
@@ -44,9 +48,9 @@ namespace _20HTTT_1.Controllers.Nhan
                     {
                         Id = Guid.NewGuid(),
                         Status = "Waiting",
-                        BuyDate = DateTime.Now, 
-                        Id_Khach = dtoCheckExist.Id_Khach,
-                        Id_ChinhSach = dtoCheckExist.Id_ChinhSach
+                        BuyDate = DateTime.Now,
+                        Khach_Hang = temp_KhachHang,
+                        Chinh_Sach = temp_ChinhSach
                     };
 
                     // Thêm dòng mới vào bảng

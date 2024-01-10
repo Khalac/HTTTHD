@@ -34,7 +34,8 @@ namespace _20HTTT_1.Controllers.Nhan
                         MinimumAge = c.MinimumAge,
                         MaximumAge = c.MaximumAge,
                         Description = c.Description,
-                        MonthlyPay = c.MonthlyPay
+                        MonthlyPay = c.MonthlyPay,
+                        Status = c.Status
                     })
                     .ToList();
 
@@ -63,7 +64,8 @@ namespace _20HTTT_1.Controllers.Nhan
                         MinimumAge = c.MinimumAge,
                         MaximumAge = c.MaximumAge,
                         Description = c.Description,
-                        MonthlyPay = c.MonthlyPay
+                        MonthlyPay = c.MonthlyPay,
+                        Status = c.Status
                     })
                     .FirstOrDefault();
 
@@ -100,7 +102,8 @@ namespace _20HTTT_1.Controllers.Nhan
                     MinimumAge = policyDto.MinimumAge,
                     MaximumAge = policyDto.MaximumAge,
                     Description = policyDto.Description,
-                    MonthlyPay = policyDto.MonthlyPay
+                    MonthlyPay = policyDto.MonthlyPay,
+                    Status = "active"
                 };
 
                 healthCareDBContext.Chinh_Sach.Add(policy);
@@ -113,7 +116,8 @@ namespace _20HTTT_1.Controllers.Nhan
                     MinimumAge = policy.MinimumAge,
                     MaximumAge = policy.MaximumAge,
                     Description = policy.Description,
-                    MonthlyPay = policy.MonthlyPay
+                    MonthlyPay = policy.MonthlyPay,
+                    Status = policy.Status
                 };
 
                 return Ok(result);

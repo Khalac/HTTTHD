@@ -25,7 +25,6 @@ public class API_Get_ChinhSach_info : ControllerBase
         [Route("API_Get_ChinhSach_Info_Active_Disable")]
         public IActionResult Get_ChinhSach_Info_Active_Disable([FromBody] DTO_Get_ChinhSach_Info_Input Input)
         {
-            var result = new DTO_Get_KH_Info_Output();
             try
             {
                 if (Input == null)
@@ -61,6 +60,43 @@ public class API_Get_ChinhSach_info : ControllerBase
 
         }
 
+        [HttpPost]
+        [Route("API_Get_ChinhSach_Info_Age")]
+        public IActionResult Get_ChinhSach_Info_Age([FromBody] DTO_Get_ChinhSach_Age_Input Input)
+        {
+            try
+            {
+                if (Input == null)
+                {
+                    return BadRequest("Dữ liệu nhập không hợp lệ");
+                };
 
-}
+                var CheckID = healthCareDBContext.Chinh_Sach
+                    .Where(x => x.MinimumAge <= Input.Age && x.MaximumAge >= Input.Age && x.Status == "active")
+                    .Select(x => new DTO_Get_ChinhSach_Info_OutPut
+                    {
+                        IdChinhSach = x.Id_ChinhSach,
+                        Name = x.Name,
+                        MinimumAge = x.MinimumAge,
+                        MaximumAge = x.MaximumAge,
+                        Description = x.Description,
+                        MonthlyPay = x.MonthlyPay,
+                        Status = x.Status
+                    }
+                    ).ToList();
+
+                if (CheckID == null)
+                {
+                    return BadRequest("Không tìm thấy chính sách theo yêu cầu");
+                };
+
+                return Ok(CheckID);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+    }
 }

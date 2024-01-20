@@ -23,14 +23,20 @@ public class API_Request : ControllerBase
         {
             try
             {
-                var GetPo = healthCareDBContext.Khach_Hang_Chinh_Sach.FromSqlRaw("SELECT * FROM Khach_Hang_Chinh_Sach WHERE Status = 'Wait'").Select(pol => new RequestDTO
+                var GetPo = healthCareDBContext.Khach_Hang_Chinh_Sach.FromSqlRaw("SELECT * FROM Khach_Hang_Chinh_Sach WHERE Status = 'Waiting'").Select(pol => new RequestDTO
                 {
                     Id = pol.Id,
                     Status = pol.Status,
                     IdChinhsach = pol.Chinh_Sach.Id_ChinhSach,
                     IdKhach = pol.Khach_Hang.Id_Khach,
 
+                    Name = healthCareDBContext.Chinh_Sach.FirstOrDefault(x => x.Id_ChinhSach == pol.Chinh_Sach.Id_ChinhSach).Name,
+                    Description = healthCareDBContext.Chinh_Sach.FirstOrDefault(x => x.Id_ChinhSach == pol.Chinh_Sach.Id_ChinhSach).Description
+
                 }).ToList();
+
+
+
 
                 return Ok(GetPo);
 

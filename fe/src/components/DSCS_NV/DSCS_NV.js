@@ -9,7 +9,7 @@ import axios from "axios"
 
 import { notification } from "antd"
 
-function DSCS_NV({ state }) {
+function DSCS_NV() {
 
 
     const DeleteCSSuccess = (type) => {
@@ -84,7 +84,6 @@ function DSCS_NV({ state }) {
     useEffect(() => {
         axios.get(`https://localhost:7011/api/API_Policies/api/policies`)
             .then((res) => {
-
                 setDSCS(res.data)
             })
             .catch((err) => console.log(err))
@@ -103,7 +102,6 @@ function DSCS_NV({ state }) {
                 {
                     <div className="DSCS_NVDSCS_DS">
                         {active === "0" ? DanhSachCS?.map((DSCS, key) => {
-
                             return <div className="DSCS_NV_ChiTiet">
                                 <div className="DSCS_NV_ChiTiet_Ten">Gói: {DSCS.name}</div>
                                 <div className="DSCS_NV_ChiTiet_Des">{DSCS.description}</div>

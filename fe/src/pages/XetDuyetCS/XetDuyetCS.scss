@@ -1,0 +1,121 @@
+.XetDuyetCS{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    .XetDuyetCS_Header{
+        height: 20vh;
+        width: 100%;
+    }
+    .XetDuyetCS_DSCS{
+        height: 70vh;
+        width: 60%;
+        background-color: #64CCC5;
+        border-radius: 20px;
+        margin-bottom: 2%;
+        .XetDuyetCS_DSCS_LookUp{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 10%;
+            position: relative;
+            
+            .XetDuyetCS_DSCS_LookUp_Input{
+                width: 94%;
+                padding-left: 5%;
+                height: 85%;
+                border: none;
+                border-top-left-radius:19px;
+                border-top-right-radius: 19px;
+                font-family: 'Archivo Narrow', sans-serif;
+                &:focus{
+                    outline: none;
+                  }
+            }
+            .XetDuyetCS_DSCS_LookUp_Icon{
+                position: absolute;
+                background-color: #176B87;
+                height: 93%;
+                border-top-right-radius: 20px;
+                width: 7%;
+                right: 0.2%;
+                cursor: pointer;
+            }
+            
+        }
+        .XetDuyetCS_DSCS_DS{
+            width: 100%;
+            height: 90%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+            overflow-y: scroll;
+         
+            .XetDuyetCS_ChiTiet{
+                min-height: 30%;
+                width: 90%;
+                background-color: white;
+                margin-bottom: 5%;
+                margin-top: 5%;
+                border-radius: 20px;
+                padding-left: 3%;
+                position: relative;
+                .XetDuyetCS_ChiTiet_Ten{
+                    height: 50%;
+                    width: 100%;
+                    display: flex;
+                    
+                    align-items: center;
+                    font-family: 'Archivo Narrow', sans-serif;
+                    color: #000000;
+                }
+                .XetDuyetCS_ChiTiet_Des{
+                    height: 50%;
+                    width: 100%;
+                    font-family: 'Archivo Narrow', sans-serif;
+                    color: #918A8A;
+                }
+                .XetDuyetCS_ChiTiet_Status{
+                    position: absolute;
+                    right: 5%;
+                    top:15%;
+                    color: black;
+                    width: 100px;
+                    height: 30%;
+                
+                   
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-family: 'Archivo Narrow', sans-serif;
+                   
+                }.XetDuyetCS_ChiTiet_Xem{
+                    position: absolute;
+                    right: 5%;
+                    bottom:15%;
+                    color: black;
+                    width: 100px;
+                    height: 30%;
+                    border: 2px solid #64CCC5;
+                   
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    font-family: 'Archivo Narrow', sans-serif;
+                    &:hover{
+                        background-color:#64CCC5;
+                    }
+                }
+               
+                
+            }
+        }
+    }
+}

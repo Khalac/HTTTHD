@@ -1,0 +1,80 @@
+.XemTTCS{
+    height: 100vh;
+    width: 100%;
+    .XemTTCS_Header{
+        height: 20%;
+        width: 100%;
+    }
+    .XemTTCS_ChinhSach{
+        height: 80%;
+        width: 100%;
+        position: relative;
+        .XemTTCS_Name{
+            font-family: 'Anton', sans-serif;
+            color: #176B87;
+            height: 15%;
+            font-size: 150%;
+            position: absolute;
+            left: 30%;
+            top: 10%; 
+        }
+        .XemTTCS_Age{
+            font-family: 'Archivo Narrow', sans-serif;
+            color: #053B50;
+            height: 15%;
+            font-size: 120%;
+            position: absolute;
+            left: 30%;
+            top: 25%; 
+        }
+        .XemTTCS_Price{
+            font-family: 'Archivo Narrow', sans-serif;
+            color: #053B50;
+            height: 15%;
+            font-size: 120%;
+            position: absolute;
+            right: 30%;
+            top: 25%; 
+        }
+        .XemTTCS_Des{
+            font-family: 'Archivo Narrow', sans-serif;
+            color: #918A8A;
+            height: 15%;
+            font-size: 110%;
+            position: absolute;
+            left: 30%;
+            top: 40%; 
+        }
+        .XemTTCS_Button_DK{
+            width: 8%;
+            height: 7%;
+            background-color: #176B87;
+            font-family: 'Archivo Narrow', sans-serif;
+            color: white;
+            position: absolute;
+            bottom: 10%;
+            right: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .XemTTCS_Button_QL{
+            width: 8%;
+            height: 7%;
+            background-color: #F4BB64;
+            font-family: 'Archivo Narrow', sans-serif;
+            color: #053B50;
+            position: absolute;
+            bottom: 10%;
+            right: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+      
+    }
+}

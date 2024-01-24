@@ -21,7 +21,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        { localStorage.getItem("loginKH") === "false" ? <Route exac path="/" element={<LoginPage />}/> : <Route exac path="/" element={<MainPage_KH />} />}
+      <Route exac path="/" element={<LoginPage />} />
       <Route exac path="/Register" element={<RegisterForm />} />
       <Route exac path="/MainPage_KH" element={<MainPage_KH />} />
       <Route exac path="/MainPage_KH/XemTTCS" element={<XemTTCS />} />
@@ -29,12 +29,12 @@ root.render(
       <Route exac path="/MainPage_KH/TTDK" element={<TTDK />} />
       <Route exac path="/MainPage_KH/CSCT" element={<CSCT />} />
       <Route exac path="/MainPage_KH/TTKH" element={<TTKH />} />
-    </Routes>
+
  
 
-      <Routes>
-      { localStorage.getItem("loginNV") === "false" ? <Route exac path="/" element={<LoginPage />}/> : <Route exac path="/" element={<MainPage_NV />} />}
-        <Route exac path="/Register" element={<RegisterForm />} />
+
+
+
         <Route exac path="/MainPage_NV" element={<MainPage_NV />} />
         <Route exac path="/MainPage_NV/ChinhSuaCS" element={<ChinhSuaCS />} />
         <Route exac path="/MainPage_NV/ThemCS" element={<ThemCS />} />

@@ -1,11 +1,11 @@
 import React from "react";
 import './ThemCS.scss'
 import Header_NV from "../../components/Header_NV/Header_NV";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import axios from "axios";
 import { notification } from "antd"
-import { responsiveArray } from "antd/es/_util/responsiveObserver";
+
 
 function ThemCS() {
 
@@ -59,7 +59,6 @@ function ThemCS() {
         }
         else (axios.post(`https://localhost:7011/api/API_Policies/api/policies`, { name: nameCS, minimumAge: minimumAgeCS, maximumAge: maximumAgeCS, monthlyPay: monthlyPayCS, description: descriptionCS })
             .then((res) => {
-                console.log(res)
                 ThemCSSuccess("success")
                 nav('/MainPage_NV')
 

@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios"
 
 function DSCS_KH({ state }) {
-    const [DSDK,setDSDK] = useState()
+
     const [ChinhSach, setChinhSach] = useState("")
     const [DanhSachCS, setDSCS] = useState([])
     const [active, setActive] = useState("0")
@@ -17,9 +17,6 @@ function DSCS_KH({ state }) {
     const userId = localStorage.getItem("userId")
 
     const nav = useNavigate()
-
-
-
 
     const removeExtraSpace = ((s) => s.trim().split(/ +/).join(' '))
 
@@ -49,7 +46,6 @@ function DSCS_KH({ state }) {
                 }
             }
             setDSTemp(temp)
-            console.log(temp)
         }
     }
 
@@ -65,13 +61,13 @@ function DSCS_KH({ state }) {
     useEffect(() => {
         axios.post('https://localhost:7011/api/API_Get_ChinhSach_info/API_Get_ChinhSach_Info_Active_Disable',data,config)
             .then((res) => {
-                console.log(res)
                 setDSCS(res.data)
             })
             .catch((err) => console.log(err))
 
     }, [setDSCS])
-    console.log(localStorage.getItem("loginKH"))
+  
+    
     return (
         <div className="DSCS_KH">
             <div className="DSCS_KH_DS">

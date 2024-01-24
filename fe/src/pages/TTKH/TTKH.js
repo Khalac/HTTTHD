@@ -6,8 +6,25 @@ import { useNavigate } from "react-router-dom";
 
 
 import axios from "axios";
+import { notification } from "antd"
 
 const TTKH = () => {
+
+    
+    const DoiTTKHTC = (type) => {
+        notification[type]({
+            message: "Success",
+            description: "Bạn đã đổi thông tin thành công!!!",
+        });
+    }
+    const DoiTTKHTB = (type) => {
+        notification[type]({
+            message: "Error",
+            description: "Bạn đã đổi thông tin thất bại. Xin hãy thử lại!!!",
+        });
+    }
+
+
     const nav = useNavigate()
     const [KH,setKH] = useState()
     const [name,SetName] = useState()
@@ -17,6 +34,7 @@ const TTKH = () => {
     useEffect(() => {
         axios.post(`https://localhost:7011/api/API_Get_KH_Info/Get_KH_Info`,{userId: localStorage.getItem("userId")})
             .then((res) => {
+               
                 setKH(res.data)
                 
             })
@@ -43,10 +61,13 @@ const TTKH = () => {
         }
         axios.post(`https://localhost:7011/api/API_EditInfo_KH/Get_KH_Info`,{userId: localStorage.getItem("userId"),full_Name : nameTemp,gender:genderTemp,adress:adressTemp,birhday:birhdayTemp})
         .then((res) => {
-            console.log(res)
+            DoiTTKHTC('success')
             nav('/MainPage_KH')
+          
         })
-        .catch((err) => console.log(err))
+        .catch((err) => {
+            DoiTTKHTB('error')
+            console.log("error",err)})
     }
     const LogOut = () => {
         localStorage.setItem("loginKH","false")
@@ -67,7 +88,7 @@ const TTKH = () => {
                 </div>
                 <div className="TTKH_Form_Detail">
                     <div className="TTKH_Form_Detail_Text">Ngày sinh</div>
-                    <input className="TTKH_Form_Detail_Input" placeholder={KH?.birhday.substring(0,10)}  onChange={(value) => setBirhday(value.target.value)}/>
+                    <input className="TTKH_Form_Detail_Input" placeholder={KH?.birhday.substring(0,10)+ ' ' + '(YY/MM/DD)'}  onChange={(value) => setBirhday(value.target.value)}/>
                 </div>
                 <div className="TTKH_Form_Detail">
                     <div className="TTKH_Form_Detail_Text">Giới tính</div>

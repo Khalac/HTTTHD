@@ -110,7 +110,7 @@ function DSCS_NV() {
         else{
             axios.post('https://localhost:7011/api/API_Get_ChinhSach_info/API_Get_ChinhSach_Info_Active_Disable',data,config)
             .then((res) => {
-                console.log(res)
+             
                 setDSCS(res.data)
             })
             .catch((err) => console.log(err))

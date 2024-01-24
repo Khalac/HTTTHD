@@ -1,8 +1,11 @@
-import React from "react";
+import React,{useState, useEffect, useReducer} from "react";
 import "./Header_NV.scss"
 import { useNavigate } from "react-router-dom";
 
+import axios from "axios";
+
 function Header_NV() {
+    const [name,setName] = useState()
     const nav = useNavigate()
     const goToMainPage = () => {
         nav('/MainPage_NV')
@@ -16,9 +19,16 @@ function Header_NV() {
         localStorage.setItem("LoginNV",false)
         nav("/")
     }
+    useEffect(() => {
+        axios.get(`https://localhost:7011/api/API_ViewInfoEmployee/${localStorage.getItem("userId")}`)
+        .then((res) => {
+            setName(res.data.full_Name)
+      })
+      .catch((err) => console.log(err))
+    })
     return (
         <div className="Header_NV">
-            <div className="Header_NV_UserName">NV01: Nguyen Van A</div>
+            <div className="Header_NV_UserName">NV01: {name}</div>
             <div className="Header_NV_Page" onClick={() => goToMainPage()}>Trang chủ</div>
             <div className="Header_NV_Page" onClick={() => goToThemCS()}>Tạo chính sách</div>
             <div className="Header_NV_Page" onClick={() => nav('/MainPage_NV/XetDuyetCS')}>Xét duyệt</div>

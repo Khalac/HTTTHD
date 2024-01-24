@@ -6,17 +6,34 @@ import Header_NV from "../../components/Header_NV/Header_NV";
 
 import axios from "axios";
 
+import { notification } from "antd"
+
 const XetDuyet = () => {
+
+    
+    const Duyet = (type) => {
+        notification[type]({
+            message: "Success",
+            description: "Bạn đã duyệt chính sách thành công!!!",
+        });
+    }
+    const Loai = (type) => {
+        notification[type]({
+            message: "Success",
+            description: "Bạn đã loại chính sách thành công!!!",
+        });
+    }
+
+
     const [khach,setKhach] = useState()
     const [cs,setCS] = useState()
     const state= useLocation()
     const nav = useNavigate()
-    console.log(state)
+
 
     useEffect(() => {
         axios.get(`https://localhost:7011/api/API_Policies/api/policies/${state.state.idChinhsach}`)
             .then((res) => {
-                console.log(res)
                 setCS(res.data)
             })
             .catch((err) => console.log(err))
@@ -37,6 +54,7 @@ const XetDuyet = () => {
        if(s === "Using"){
         axios.post(`https://localhost:7011/api/API_UpdateStatus_Accept/button-click`,{id: state.state.id, status: s,id_Chinhsach : state.state.idChinhsach})
         .then((res) => {
+            Duyet('success')
             nav('/MainPage_NV/XetDuyetCS')
         })
         .catch((err) => console.log(err))
@@ -44,6 +62,7 @@ const XetDuyet = () => {
        else{
         axios.post(`https://localhost:7011/api/API_UpdateStatus_Deny/button-click`,{id: state.state.id, status: s,id_Chinhsach : state.state.idChinhsach})
         .then((res) => {
+            Loai('success')
             nav('/MainPage_NV/XetDuyetCS')
         })
         .catch((err) => console.log(err))

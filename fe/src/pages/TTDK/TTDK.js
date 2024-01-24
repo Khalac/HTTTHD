@@ -58,7 +58,7 @@ const TTDK = () => {
             })
             .catch((err) => console.log(err))
     },[setDS])
-    console.log(DS)
+
     return(
         <div className="TTDK">
             <div className="TTDK_Header">

@@ -5,13 +5,24 @@ import { useLocation,useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
-const option = [
-    { value: 'Nam', label: 'Nam' },
-    { value: 'Nữ', label: 'Nữ' },
-    { value: 'Khác', label: 'Khác' }
-  ]
+import { notification } from "antd"
 
 const DangKiCS = () => {
+    
+    const DangKiCSTC = (type) => {
+        notification[type]({
+            message: "Success",
+            description: "Bạn đã duyệt chính sách thành công!!!",
+        });
+    }
+    const DangKiCSTB = (type) => {
+        notification[type]({
+            message: "Success",
+            description: "Bạn đã loại chính sách thành công!!!",
+        });
+    }
+
+
     const [khach,setKhach] = useState()
     const style = {
         control: (base) => ({
@@ -50,6 +61,7 @@ const DangKiCS = () => {
     const DKCS = () => {
         axios.post(`https://localhost:7011/api/API_CheckAndCreate_KhachHangChinhSach/check-and-create-Khachhangchinhsach`,{id_ChinhSach: state.state.idChinhSach,id_Khach: localStorage.getItem("userId")})
         .then((res) => {
+            DangKiCSTC('success')
             nav('/MainPage_KH')
         })
         .catch((err) => console.log(err))

@@ -52,7 +52,7 @@ function ChinhSuaCS() {
             descriptionTemp = ChinhSach.description
             descriptionTemp = descriptionTemp.toString()
         }
-        console.log(ChinhSach)
+    
         axios.put(`https://localhost:7011/api/API_Policies/api/policies/${state.state.idChinhSach}`, { name: nameTemp, minimumAge: minimumAgeTemp, maximumAge: maximumAgeTemp, monthlyPay: monthlyPayTemp, description: descriptionTemp, status:"Active" })
             .then((res) => {
 

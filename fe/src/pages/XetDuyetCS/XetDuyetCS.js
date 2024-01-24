@@ -9,6 +9,8 @@ import axios from "axios";
 import './XetDuyetCS.scss'
 import Header_NV from "../../components/Header_NV/Header_NV";
 
+
+
 const XetDuyetCS = () => {
     const [ChinhSach, setChinhSach] = useState("")
     const [active, setActive] = useState("0")
@@ -56,12 +58,9 @@ const XetDuyetCS = () => {
     useEffect(() => {
         axios.get(`https://localhost:7011/api/API_Request/API_Request`)
             .then((res) => {
-                setDSDK(res.data)
-               
+                setDSDK(res.data)        
             })
             .catch((err) => console.log(err))
-
-       
     })
  
     
@@ -79,14 +78,14 @@ const XetDuyetCS = () => {
                 <div className="XetDuyetCS_DSCS_DS">
                     {active === "0" ? DanhSachDangKi?.map((DSDK, key) => {
                   
-                        return DSDK.status === "Using" ? <div className="XetDuyetCS_ChiTiet" >
+                        return DSDK.status === "Waiting" ? <div className="XetDuyetCS_ChiTiet" >
                             <div className="XetDuyetCS_ChiTiet_Ten">Gói: {DSDK.name}</div>
                             <div className="XetDuyetCS_ChiTiet_Des">{DSDK.description}</div>
                            <div className="XetDuyetCS_ChiTiet_Status" >Chờ duyệt</div> 
                             <div className="XetDuyetCS_ChiTiet_Xem" onClick={() => nav('/MainPage_NV/XetDuyetCS/XetDuyet',{state : {id: DSDK.id,status:DSDK.status,idChinhsach : DSDK.idChinhsach, idKhach : DSDK.idKhach}})}>Xem</div>
                         </div>:<></>
                     }) : DSTemp?.map((DSDK, key) => {
-                        return DSDK.status === "Using" ? <div className="XetDuyetCS_ChiTiet" >
+                        return DSDK.status === "Waiting" ? <div className="XetDuyetCS_ChiTiet" >
                         <div className="XetDuyetCS_ChiTiet_Ten">Gói: {DSDK.name}</div>
                         <div className="XetDuyetCS_ChiTiet_Des">{DSDK.description}</div>
                        <div className="XetDuyetCS_ChiTiet_Status" >Chờ duyệt</div> 

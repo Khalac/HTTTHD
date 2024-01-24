@@ -16,8 +16,6 @@ function Header_KH() {
                if(res.data.onSuccess){
                 setName(res.data.full_Name)
                }
-                
-               
             })
             .catch((err) => console.log(err))
 

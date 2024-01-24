@@ -1,0 +1,172 @@
+.DangKiCS{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .DangKiCS_Header{
+        height: 20vh;
+        width: 100%;
+    }
+    .DangKiCS_Name{
+        font-family: 'Anton', sans-serif;
+        color: #176B87;
+        height: 10%;
+        font-size: 150%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .DangKiCS_NameCS{
+        font-family: 'Archivo Narrow', sans-serif;
+        color: #053B50;
+        height: 5%;
+        font-size: 130%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .DangKiCS_HoTen{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 10%;
+        width: 100%;
+        .DangKiCS_HoTen_Text{
+            color: #053B50;
+            font-family: 'Archivo Narrow', sans-serif;
+            width: 100px;
+            display: flex;
+            
+            align-items: center;
+        }
+        .DangKiCS_HoTen_Input{
+            height: 60%;
+            width: 600px;
+            border: 2px solid #64CCC5;
+            display: flex;
+            padding-left: 2%;
+            align-items: center;
+            color: #053B50;
+            font-family: 'Archivo Narrow', sans-serif;
+        }
+    }
+    .DangKiCS_GioiTinh{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 10%;
+        width: 100%;
+        .DangKiCS_GioiTinh_Text{
+            color: #053B50;
+            font-family: 'Archivo Narrow', sans-serif;
+            width: 100px;
+            display: flex;
+            
+            align-items: center;
+        }
+        .DangKiCS_GioiTinh_Input{
+            height: 60%;
+            width: 600px;
+            border: 2px solid #64CCC5;
+            display: flex;
+            padding-left: 2%;
+            align-items: center;
+            color: #053B50;
+            font-family: 'Archivo Narrow', sans-serif;
+        }
+    }
+    .DangKiCS_NgaySinh{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 10%;
+        width: 100%;
+        .DangKiCS_NgaySinh_Text{
+            color: #053B50;
+            font-family: 'Archivo Narrow', sans-serif;
+            width: 100px;
+            display: flex;
+            
+            align-items: center;
+        }
+       
+            .DangKiCS_NgaySinh_Input{
+                height: 60%;
+                width: 600px;
+                border: 2px solid #64CCC5;
+                display: flex;
+                padding-left: 2%;
+                align-items: center;
+                color: #053B50;
+                font-family: 'Archivo Narrow', sans-serif;
+            }
+    }
+    .DangKiCS_DiaChi{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 10%;
+        width: 100%;
+        .DangKiCS_DiaChi_Text{
+            color: #053B50;
+            font-family: 'Archivo Narrow', sans-serif;
+            width: 100px;
+            display: flex;
+            
+            align-items: center;
+        }
+        .DangKiCS_DiaChi_Input{
+            height: 60%;
+            width: 600px;
+            border: 2px solid #64CCC5;
+            display: flex;
+            padding-left: 2%;
+            align-items: center;
+            color: #053B50;
+            font-family: 'Archivo Narrow', sans-serif;
+        }
+    }
+    .DangKiCS_Button{
+        height: 25%;
+        width: 100%;
+        position: relative;
+        .DangKiCS_Button_Huy{
+            position: absolute;
+            display: flex;
+            right: 55%;
+            bottom: 40%;
+            justify-content: center;
+            align-items: center;
+            width: 7%;
+            height: 20%;
+            background-color: #F4BB64;
+            color: #053B50;
+            font-family: 'Archivo Narrow', sans-serif;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .DangKiCS_Button_DK{
+            position: absolute;
+            display: flex;
+            right: 40%;
+            bottom: 40%;
+            justify-content: center;
+            align-items: center;
+            width: 7%;
+            height: 20%;
+            background-color: #64CCC5;
+            color: #053B50;
+            font-family: 'Archivo Narrow', sans-serif;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+    }
+}

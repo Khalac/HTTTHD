@@ -1,5 +1,6 @@
 ﻿using _20HTTT_1.DTO.Hung;
 using _20HTTT_1.DTO.Nhan;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +12,8 @@ using TestConnect.Domain;
 namespace _20HTTT_1.Controllers.Hung
 {
     [Route("api/[controller]")]
-[ApiController]
+    [ApiController]
+    [Authorize]
 public class API_Get_ChinhSach_info : ControllerBase
 {
         private readonly HealthCareDBContext healthCareDBContext;
@@ -23,6 +25,7 @@ public class API_Get_ChinhSach_info : ControllerBase
 
         [HttpPost]
         [Route("API_Get_ChinhSach_Info_Active_Disable")]
+        [Authorize(Roles = "Reader")]
         public IActionResult Get_ChinhSach_Info_Active_Disable([FromBody] DTO_Get_ChinhSach_Info_Input Input)
         {
             try

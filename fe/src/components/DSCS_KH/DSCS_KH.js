@@ -4,14 +4,19 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 
 import { useState, useEffect } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import axios from "axios"
 
 function DSCS_KH({ state }) {
+    const [DSDK,setDSDK] = useState()
     const [ChinhSach, setChinhSach] = useState("")
-    const [DanhSachCS, setDSCS] = useState()
+    const [DanhSachCS, setDSCS] = useState([])
     const [active, setActive] = useState("0")
     const [DSTemp, setDSTemp] = useState()
+    const userId = localStorage.getItem("userId")
 
+    const nav = useNavigate()
 
     const removeExtraSpace = ((s) => s.trim().split(/ +/).join(' '))
 
@@ -49,16 +54,27 @@ function DSCS_KH({ state }) {
 
     }
 
-
+    
     useEffect(() => {
-        axios.get(`https://localhost:7011/api/API_Policy/api/policies/${state.state.userId}`)
+        axios.post(`https://localhost:7011/api/API_Get_ChinhSach_info/API_Get_ChinhSach_Info_Active_Disable`,{status:'Active'})
             .then((res) => {
-
                 setDSCS(res.data)
             })
             .catch((err) => console.log(err))
 
-    }, [DanhSachCS])
+    }, [DanhSachCS,setDSCS])
+
+    useEffect(() => {
+        axios.get(`https://localhost:7011/api/API_Request/API_Request`)
+            .then((res) => {
+
+                setDSDK(res.data)
+               
+            })
+            .catch((err) => console.log(err))
+
+       
+    })
     return (
         <div className="DSCS_KH">
             <div className="DSCS_KH_DS">
@@ -72,18 +88,19 @@ function DSCS_KH({ state }) {
                 {
                     <div className="DSCS_KHDSCS_DS">
                         {active === "0" ? DanhSachCS?.map((DSCS, key) => {
+                           
                             return <div className="DSCS_ChiTiet">
                                 <div className="DSCS_ChiTiet_Ten">Gói: {DSCS.name}</div>
                                 <div className="DSCS_ChiTiet_Des">{DSCS.description}</div>
-                                <div className="DSCS_ChiTiet_Button_DangKy">Đăng ký </div>
-                                <div className="DSCS_ChiTiet_Button_ChiTiet">Chi tiết </div>
+                                <div className="DSCS_ChiTiet_Button_DangKy" onClick={() => nav('/MainPage_KH/DangKiCS',{ state: { idChinhSach: DSCS.idChinhSach } })}>Đăng ký </div>
+                                <div className="DSCS_ChiTiet_Button_ChiTiet" onClick={() => nav('/MainPage_KH/XemTTCS',{ state: { idChinhSach: DSCS.idChinhSach } })}>Chi tiết </div>
                             </div>
                         }) : DSTemp?.map((DSCS, key) => {
                             return <div className="DSCS_ChiTiet">
                                 <div className="DSCS_ChiTiet_Ten">Gói: {DSCS.name}</div>
                                 <div className="DSCS_ChiTiet_Des">{DSCS.description}</div>
-                                <div className="DSCS_ChiTiet_Button_DangKy">Đăng ký </div>
-                                <div className="DSCS_ChiTiet_Button_ChiTiet">Chi tiết </div>
+                                <div className="DSCS_ChiTiet_Button_DangKy" onClick={() => nav('/MainPage_KH/DangKiCS',{ state: { idChinhSach: DSCS.idChinhSach } })}>Đăng ký </div>
+                                <div className="DSCS_ChiTiet_Button_ChiTiet" onClick={() => nav('/MainPage_KH/XemTTCS',{ state: { idChinhSach: DSCS.idChinhSach } })}>Chi tiết </div>
                             </div>
                         })}
                     </div>

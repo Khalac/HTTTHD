@@ -1,0 +1,99 @@
+.TTKH{
+    height: 100vh;
+    width: 100%;
+
+    .TTKH_Header{
+        height: 20vh;
+        width: 100%;
+    }
+   
+    .TTKH_Form{
+        height: 80vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        .TTKH_Form_Name{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20%;
+            font-family: 'Anton', sans-serif;
+            color: #176B87;
+            font-size: 150%;
+        }
+        .TTKH_Form_Detail{
+            display:flex;
+            height: 10%;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            color: #053B50;
+            font-family: 'Archivo Narrow', sans-serif;
+            margin-bottom: 1.5%;
+            .TTKH_Form_Detail_Text{
+                width: 150px;
+                    height: 100%;
+                    display: flex;
+                   
+                    align-items: center;
+                font-family: 'Archivo Narrow', sans-serif;
+                color: #053B50;
+            }
+            .TTKH_Form_Detail_Input{
+                height: 60%;
+                    width: 600px;
+                    border: 2px solid #64CCC5;
+                    padding-left: 2%;
+                    &:focus{
+                        outline: none;
+                    }
+            }
+        }
+        .TTKH_Form_Button_Huy{
+            position: absolute;
+            width: 7%;
+            height: 7%;
+            background-color: red;
+            bottom: 10%;
+            right: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            font-family: 'Archivo Narrow', sans-serif;
+            cursor: pointer;
+        }
+        .TTKH_Form_Button_Luu{
+            position: absolute;
+            width: 7%;
+            height: 7%;
+            background-color: #176B87;
+            bottom: 10%;
+            right: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            font-family: 'Archivo Narrow', sans-serif;
+            cursor: pointer;
+        }
+        .TTKH_Form_Button_DangXuat{
+            position: absolute;
+            width: 7%;
+            height: 7%;
+            border:2px solid #64CCC5;
+            bottom: 10%;
+            left: 32%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            font-family: 'Archivo Narrow', sans-serif;
+            cursor: pointer;
+        }
+    }
+
+}

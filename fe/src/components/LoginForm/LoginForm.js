@@ -33,12 +33,20 @@ function LoginForm() {
     await axios.post("https://localhost:7011/api/API_Login/LoginCheck", { user_Name: user_Name, password: password })
       .then((res) => {
         if (res.data.onSuccess) {
-          console.log(res.data)
+          console.log(res.data.userId)
           if (res.data.type === "NV") {
-            nav("/MainPage_NV", { state: { userId: res.data.userId, LogIn: true } });
+            
+            localStorage.setItem("userId",res.data.userId)
+            localStorage.setItem("login",true)
+            nav("/MainPage_NV");
+          
           }
           else {
-            nav("MainPage_KH", { state: { userId: res.data.userId, LogIn: true } })
+            
+            localStorage.setItem("userId",res.data.userId)
+            localStorage.setItem("login",true)
+            nav("MainPage_KH")
+           
           }
         }
         else {

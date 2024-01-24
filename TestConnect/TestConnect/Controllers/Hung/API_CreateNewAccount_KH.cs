@@ -6,6 +6,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection.Metadata.Ecma335;
 using TestConnect.Data;
 using TestConnect.Domain;
+using _20HTTT_1.Repository;
+using _20HTTT_1.DTO;
+using Microsoft.AspNetCore.Identity;
+using _20HTTT_1.Controllers;
+using Microsoft.Win32;
+using System.Net.Http;
 
 namespace _20HTTT_1.Controllers.Hung
 {
@@ -14,11 +20,7 @@ namespace _20HTTT_1.Controllers.Hung
 public class API_CreateNewAccount_KH : ControllerBase
 {
         private readonly HealthCareDBContext healthCareDBContext;
-
-        public API_CreateNewAccount_KH(HealthCareDBContext healthCareDBContext)
-        {
-            this.healthCareDBContext = healthCareDBContext;
-        }
+     
 
         [HttpPost]
         [Route("LoginCheck")]
@@ -71,7 +73,11 @@ public class API_CreateNewAccount_KH : ControllerBase
                 healthCareDBContext.SaveChanges();
 
                 ReturnValue.userNameCheck = true;
-                return Ok(ReturnValue);  
+
+                
+
+                return Ok(ReturnValue);
+
             }
             catch (Exception ex) {
                 return BadRequest(ex.Message);

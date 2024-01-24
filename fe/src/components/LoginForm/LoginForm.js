@@ -30,21 +30,29 @@ function LoginForm() {
   }
 
   const LogIn = async () => {
+    localStorage.clear();
+    await axios.post("https://localhost:7011/api/Auth/Login", { username: user_Name, password: password })
+    .then((res) => {
+
+          localStorage.setItem("token",res.data.token)
+          localStorage.setItem("login",true)
+    })
+    .catch((err) => console.log(err))
+
     await axios.post("https://localhost:7011/api/API_Login/LoginCheck", { user_Name: user_Name, password: password })
       .then((res) => {
         if (res.data.onSuccess) {
           console.log(res.data.userId)
           if (res.data.type === "NV") {
-            
+              console.log(res)
             localStorage.setItem("userId",res.data.userId)
-            localStorage.setItem("login",true)
+            localStorage.setItem("loginNV","true")
             nav("/MainPage_NV");
           
           }
           else {
-            
             localStorage.setItem("userId",res.data.userId)
-            localStorage.setItem("login",true)
+            localStorage.setItem("loginKH","true")
             nav("MainPage_KH")
            
           }
@@ -63,7 +71,7 @@ function LoginForm() {
       </div>
       <div className="PasswordForm">
         <GoLock className="PasswordForm_Icon" />
-        <input className="PasswordForm_Text" placeholder="Mật khẩu" onChange={(values) => setPassword(values.target.value)} />
+        <input className="PasswordForm_Text" placeholder="Mật khẩu" onChange={(values) => setPassword(values.target.value)} type="password" maxLength={20}/>
       </div>
       <div className="LoginForm_ForgetPass">Bạn quên mật khẩu?</div>
       <div className="LoginForm_Button_LogIn">

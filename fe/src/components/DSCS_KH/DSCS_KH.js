@@ -18,6 +18,9 @@ function DSCS_KH({ state }) {
 
     const nav = useNavigate()
 
+
+
+
     const removeExtraSpace = ((s) => s.trim().split(/ +/).join(' '))
 
     const capitalizeWords = (str) => {
@@ -48,33 +51,27 @@ function DSCS_KH({ state }) {
             setDSTemp(temp)
             console.log(temp)
         }
-
-
-
-
     }
 
-    
+    let data = {
+        status: 'Active'
+      };
+    let config = {
+        headers: { 
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+      };
+      
     useEffect(() => {
-        axios.post(`https://localhost:7011/api/API_Get_ChinhSach_info/API_Get_ChinhSach_Info_Active_Disable`,{status:'Active'})
+        axios.post('https://localhost:7011/api/API_Get_ChinhSach_info/API_Get_ChinhSach_Info_Active_Disable',data,config)
             .then((res) => {
+                console.log(res)
                 setDSCS(res.data)
             })
             .catch((err) => console.log(err))
 
-    }, [DanhSachCS,setDSCS])
-
-    useEffect(() => {
-        axios.get(`https://localhost:7011/api/API_Request/API_Request`)
-            .then((res) => {
-
-                setDSDK(res.data)
-               
-            })
-            .catch((err) => console.log(err))
-
-       
-    })
+    }, [setDSCS])
+    console.log(localStorage.getItem("loginKH"))
     return (
         <div className="DSCS_KH">
             <div className="DSCS_KH_DS">

@@ -48,18 +48,25 @@ const RegisterForm = () => {
             passworddontmatch('error')
         }
         else {
-            await axios.post("https://localhost:7011/api/API_CreateNewAccount_KH/LoginCheck", { userName: username, password: password })
+        await axios.post("https://localhost:7011/api/API_CreateNewAccount_KH/LoginCheck", { userName: username, password: password })
                 .then((res) => {
                     if (res.data.userNameCheck) {
-                        RegisterSuccess("success")
-                        goToLogin()
+                        console.log("Success")
                     }
                     else {
-                        RegisterFail("error")
+                        console.log("Error")
                     }
                 })
                 .catch((err) => console.log(err))
         }
+       await axios.post("https://localhost:7011/api/Auth/Register", { userName: username, password: password, roles : ["READER","WRITER"] })
+                .then((res) => {
+                    
+                        RegisterSuccess("success")
+                        goToLogin()
+                   
+                })
+                .catch((err) => console.log(err))
     }
     return (<div className="RegisterForm">
         <div className="RegisterForm_Name">Đăng ký tài khoản</div>
@@ -69,11 +76,11 @@ const RegisterForm = () => {
         </div>
         <div className="RegisterForm_Password">
             <div className="RegisterForm_Password_Text">Mật khẩu</div>
-            <input className="RegisterForm_Password_Input" placeholder="Nhập mật khẩu" onChange={(values) => setPassword(values.target.value)} />
+            <input className="RegisterForm_Password_Input" placeholder="Nhập mật khẩu" onChange={(values) => setPassword(values.target.value)}  type="password" maxLength={20}/>
         </div>
         <div className="RegisterForm_RePassword">
-            <div className="RegisterForm_RePassword_Text">Mật khẩu</div>
-            <input className="RegisterForm_RePassword_Input" placeholder="Nhập mật khẩu" onChange={(values) => setRePassword(values.target.value)} />
+            <div className="RegisterForm_RePassword_Text">Nhập lại mật khẩu</div>
+            <input className="RegisterForm_RePassword_Input" placeholder="Nhập lại mật khẩu" onChange={(values) => setRePassword(values.target.value)}  type="password" maxLength={20}/>
         </div>
         <div className="RegisterForm_Button">
             <div className="RegisterForm_Button_QL" onClick={() => goToLogin()}>Quay lại</div>

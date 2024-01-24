@@ -44,10 +44,16 @@ const TTKH = () => {
         axios.post(`https://localhost:7011/api/API_EditInfo_KH/Get_KH_Info`,{userId: localStorage.getItem("userId"),full_Name : nameTemp,gender:genderTemp,adress:adressTemp,birhday:birhdayTemp})
         .then((res) => {
             console.log(res)
+            nav('/MainPage_KH')
         })
         .catch((err) => console.log(err))
     }
-
+    const LogOut = () => {
+        localStorage.setItem("loginKH","false")
+        localStorage.removeItem("userId")
+        localStorage.removeItem("token")
+        nav("/")
+    }
     return (
         <div className="TTKH">
             <div className="TTKH_Header">
@@ -61,7 +67,7 @@ const TTKH = () => {
                 </div>
                 <div className="TTKH_Form_Detail">
                     <div className="TTKH_Form_Detail_Text">Ngày sinh</div>
-                    <input className="TTKH_Form_Detail_Input" placeholder={KH?.birhday}  onChange={(value) => setBirhday(value.target.value)}/>
+                    <input className="TTKH_Form_Detail_Input" placeholder={KH?.birhday.substring(0,10)}  onChange={(value) => setBirhday(value.target.value)}/>
                 </div>
                 <div className="TTKH_Form_Detail">
                     <div className="TTKH_Form_Detail_Text">Giới tính</div>
@@ -73,7 +79,7 @@ const TTKH = () => {
                 </div>
                 <div className="TTKH_Form_Button_Huy" onClick={() => nav("/MainPage_KH")}>Hủy</div>
                 <div className="TTKH_Form_Button_Luu" onClick={() => LuuTTKH()}>Lưu</div>
-                <div className="TTKH_Form_Button_DangXuat">Đăng xuát</div>
+                <div className="TTKH_Form_Button_DangXuat" onClick={() => LogOut()}>Đăng xuất</div>
             </div>
         </div>
     )

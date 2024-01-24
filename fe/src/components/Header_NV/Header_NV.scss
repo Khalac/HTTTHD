@@ -16,4 +16,20 @@
         color: #053B50;
         cursor: pointer;
     }
+    .Header_NV_LogOut{
+        height: 30%;
+        width: 7%;
+     
+        background-color: white;
+        font-family: 'Archivo Narrow', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+        cursor: pointer;
+        &:hover{
+            background-color: red;
+            color: white;
+        }
+    }
 }

@@ -21,24 +21,27 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route exac path="/" element={<LoginPage />} />
+        { localStorage.getItem("loginKH") === "false" ? <Route exac path="/" element={<LoginPage />}/> : <Route exac path="/" element={<MainPage_KH />} />}
+      <Route exac path="/Register" element={<RegisterForm />} />
+      <Route exac path="/MainPage_KH" element={<MainPage_KH />} />
+      <Route exac path="/MainPage_KH/XemTTCS" element={<XemTTCS />} />
+      <Route exac path="/MainPage_KH/DangKiCS" element={<DangKiCS />} />
+      <Route exac path="/MainPage_KH/TTDK" element={<TTDK />} />
+      <Route exac path="/MainPage_KH/CSCT" element={<CSCT />} />
+      <Route exac path="/MainPage_KH/TTKH" element={<TTKH />} />
+    </Routes>
+ 
+
+      <Routes>
+      { localStorage.getItem("loginNV") === "false" ? <Route exac path="/" element={<LoginPage />}/> : <Route exac path="/" element={<MainPage_NV />} />}
         <Route exac path="/Register" element={<RegisterForm />} />
-        <Route exac path="/MainPage_KH" element={<MainPage_KH />} />
-        <Route exac path="/MainPage_KH/XemTTCS" element={<XemTTCS />} />
-        <Route exac path="/MainPage_KH/DangKiCS" element={<DangKiCS />} />
-        <Route exac path="/MainPage_KH/TTDK" element={<TTDK />} />
-        <Route exac path="/MainPage_KH/CSCT" element={<CSCT />} />
-        <Route exac path="/MainPage_KH/TTKH" element={<TTKH />} />
-
-
-
-
-        <Route exac path="/MainPage_NV" element={<MainPage_NV />} > </Route>
+        <Route exac path="/MainPage_NV" element={<MainPage_NV />} />
         <Route exac path="/MainPage_NV/ChinhSuaCS" element={<ChinhSuaCS />} />
         <Route exac path="/MainPage_NV/ThemCS" element={<ThemCS />} />
         <Route exac path="/MainPage_NV/ThemCS" element={<ThemCS />} />
         <Route exac path="/MainPage_NV/XetDuyetCS" element={<XetDuyetCS />} />
         <Route exac path="/MainPage_NV/XetDuyetCS/XetDuyet" element={<XetDuyet />} />
+
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

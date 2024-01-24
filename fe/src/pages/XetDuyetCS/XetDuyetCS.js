@@ -56,7 +56,6 @@ const XetDuyetCS = () => {
     useEffect(() => {
         axios.get(`https://localhost:7011/api/API_Request/API_Request`)
             .then((res) => {
-
                 setDSDK(res.data)
                
             })
@@ -80,19 +79,19 @@ const XetDuyetCS = () => {
                 <div className="XetDuyetCS_DSCS_DS">
                     {active === "0" ? DanhSachDangKi?.map((DSDK, key) => {
                   
-                        return <div className="XetDuyetCS_ChiTiet" >
+                        return DSDK.status === "Using" ? <div className="XetDuyetCS_ChiTiet" >
                             <div className="XetDuyetCS_ChiTiet_Ten">Gói: {DSDK.name}</div>
                             <div className="XetDuyetCS_ChiTiet_Des">{DSDK.description}</div>
-                            { DanhSachDangKi[key].status === "Using" ? <div className="XetDuyetCS_ChiTiet_Status"> Đã duyệt </div> : DanhSachDangKi[key].status === "Deny" ? <div className="XetDuyetCS_ChiTiet_Status" >Từ chối</div> : DanhSachDangKi[key].status === "Waiting" ? <div className="XetDuyetCS_ChiTiet_Status" >Chờ duyệt</div> : <div className="XetDuyetCS_ChiTiet_Status" >Đã hủy</div>}
+                           <div className="XetDuyetCS_ChiTiet_Status" >Chờ duyệt</div> 
                             <div className="XetDuyetCS_ChiTiet_Xem" onClick={() => nav('/MainPage_NV/XetDuyetCS/XetDuyet',{state : {id: DSDK.id,status:DSDK.status,idChinhsach : DSDK.idChinhsach, idKhach : DSDK.idKhach}})}>Xem</div>
-                        </div>
+                        </div>:<></>
                     }) : DSTemp?.map((DSDK, key) => {
-                        return <div className="XetDuyetCS_ChiTiet">
-                            <div className="XetDuyetCS_ChiTiet_Ten">Gói: {DSDK.name}</div>
-                            <div className="XetDuyetCS_ChiTiet_Des">{DSDK.description}</div>
-                            { DanhSachDangKi[key].status === "Using" ? <div className="XetDuyetCS_ChiTiet_Status"> Đã duyệt </div> : DanhSachDangKi[key].status === "Deny" ? <div className="XetDuyetCS_ChiTiet_Status" >Từ chối</div> : DanhSachDangKi[key].status === "Waiting" ? <div className="XetDuyetCS_ChiTiet_Status" >Chờ duyệt</div> : <div className="XetDuyetCS_ChiTiet_Status" >Đã hủy</div>}
-                            <div className="XetDuyetCS_ChiTiet_Xem" onClick={() => nav('/MainPage_NV/XetDuyetCS/XetDuyet',{state: {id: DSDK.id,status:DSDK.status,idChinhsach : DSDK.idChinhsach, idKhach : DSDK.idKhach}   })}>Xem</div>
-                        </div>
+                        return DSDK.status === "Using" ? <div className="XetDuyetCS_ChiTiet" >
+                        <div className="XetDuyetCS_ChiTiet_Ten">Gói: {DSDK.name}</div>
+                        <div className="XetDuyetCS_ChiTiet_Des">{DSDK.description}</div>
+                       <div className="XetDuyetCS_ChiTiet_Status" >Chờ duyệt</div> 
+                        <div className="XetDuyetCS_ChiTiet_Xem" onClick={() => nav('/MainPage_NV/XetDuyetCS/XetDuyet',{state : {id: DSDK.id,status:DSDK.status,idChinhsach : DSDK.idChinhsach, idKhach : DSDK.idKhach}})}>Xem</div>
+                    </div>:<></>
                     })}
                 </div>
 

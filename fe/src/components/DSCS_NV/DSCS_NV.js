@@ -73,7 +73,7 @@ function DSCS_NV() {
                 }
             }
             setDSTemp(temp)
-            console.log(temp)
+
         }
 
 
@@ -87,6 +87,15 @@ function DSCS_NV() {
             .catch((err) => DeleteCSFailed('error'))
     }
 
+    let data = {
+        status: value
+      };
+    let config = {
+        headers: { 
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+      };
+      
 
     useEffect(() => {
         if(value === "All"){
@@ -99,27 +108,18 @@ function DSCS_NV() {
             .catch((err) => console.log(err))
         }
         else{
-            axios.post(`https://localhost:7011/api/API_Get_ChinhSach_info/API_Get_ChinhSach_Info_Active_Disable`,{status: value})
+            axios.post('https://localhost:7011/api/API_Get_ChinhSach_info/API_Get_ChinhSach_Info_Active_Disable',data,config)
             .then((res) => {
-    
+                console.log(res)
                 setDSCS(res.data)
-    
             })
             .catch((err) => console.log(err))
+
         }
      
 
     }, [DanhSachCS])
 
-    const changeValue = (value) => {
-        axios.post(`https://localhost:7011/api/API_Get_ChinhSach_info/API_Get_ChinhSach_Info_Active_Disable`,{status: value.value})
-        .then((res) => {
-
-            setDSCS(res.data)
-
-        })
-        .catch((err) => console.log(err))
-    }
     return (
         <div className="DSCS_NV">
             <Select className="Select" defaultValue={option[0]} options={option} onChange={(value) => setValue(value.value)}/>
@@ -135,19 +135,29 @@ function DSCS_NV() {
                 {
                     <div className="DSCS_NVDSCS_DS">
                         {active === "0" ? DanhSachCS?.map((DSCS, key) => {
-                            return <div className="DSCS_NV_ChiTiet">
+                            return value === "Disabled" ? <div className="DSCS_NV_ChiTiet">
+                                <div className="DSCS_NV_ChiTiet_Ten">Gói: {DSCS.name}</div>
+                                <div className="DSCS_NV_ChiTiet_Des">{DSCS.description}</div>
+                                <div className="DSCS_NV_ChiTiet_ChinhSua" onClick={() => GoToCSCS(DSCS.idChinhSach)}>Chỉnh sửa</div>
+                               
+                            </div> : <div className="DSCS_NV_ChiTiet">
                                 <div className="DSCS_NV_ChiTiet_Ten">Gói: {DSCS.name}</div>
                                 <div className="DSCS_NV_ChiTiet_Des">{DSCS.description}</div>
                                 <div className="DSCS_NV_ChiTiet_ChinhSua" onClick={() => GoToCSCS(DSCS.idChinhSach)}>Chỉnh sửa</div>
                                 <div className="DSCS_NV_ChiTiet_Xoa" onClick={() => XoaCS(DSCS.idChinhSach)}>Xóa</div>
                             </div>
                         }) : DSTemp?.map((DSCS, key) => {
-                            return <div className="DSCS_NV_ChiTiet">
-                                <div className="DSCS_NV_ChiTiet_Ten">Gói: {DSCS.name}</div>
-                                <div className="DSCS_NV_ChiTiet_Des">{DSCS.description}</div>
-                                <div className="DSCS_NV_ChiTiet_ChinhSua" onClick={() => GoToCSCS(DSCS.idChinhSach)}>Chỉnh sửa</div>
-                                <div className="DSCS_NV_ChiTiet_Xoa" onClick={() => XoaCS(DSCS.idChinhSach)}>Xóa</div>
-                            </div>
+                            return value === "Disabled" ? <div className="DSCS_NV_ChiTiet">
+                            <div className="DSCS_NV_ChiTiet_Ten">Gói: {DSCS.name}</div>
+                            <div className="DSCS_NV_ChiTiet_Des">{DSCS.description}</div>
+                            <div className="DSCS_NV_ChiTiet_ChinhSua" onClick={() => GoToCSCS(DSCS.idChinhSach)}>Chỉnh sửa</div>
+                           
+                        </div> : <div className="DSCS_NV_ChiTiet">
+                            <div className="DSCS_NV_ChiTiet_Ten">Gói: {DSCS.name}</div>
+                            <div className="DSCS_NV_ChiTiet_Des">{DSCS.description}</div>
+                            <div className="DSCS_NV_ChiTiet_ChinhSua" onClick={() => GoToCSCS(DSCS.idChinhSach)}>Chỉnh sửa</div>
+                            <div className="DSCS_NV_ChiTiet_Xoa" onClick={() => XoaCS(DSCS.idChinhSach)}>Xóa</div>
+                        </div>
                         })}
                     </div>
 

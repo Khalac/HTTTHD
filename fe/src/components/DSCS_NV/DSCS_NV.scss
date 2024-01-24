@@ -1,6 +1,13 @@
 .DSCS_NV{
     height: 100%;
     width: 60%;
+    position: relative;
+    .Select{
+        position: absolute;
+        width: 15%;
+        right: -20%;
+        top: 15%;
+    }
     .DSCS_NV_DS{
         font-family: 'Anton', sans-serif;
         color: #176B87;
@@ -15,7 +22,6 @@
         width: 100%;
         background-color: #64CCC5;
         border-radius: 20px;
-        
         .DSCS_NV_DSCS_LookUp{
             display: flex;
             justify-content: center;

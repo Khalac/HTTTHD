@@ -9,9 +9,16 @@ import axios from "axios"
 
 import { notification } from "antd"
 
+import Select from 'react-select'
+
 function DSCS_NV() {
-
-
+    const option =[
+        { value: 'All', label: 'All' },
+        { value: 'Active', label: 'Active' },
+        { value: 'Disabled', label: 'Disabled' }
+   ]
+   const [value,setValue] = useState("All")
+   
     const DeleteCSSuccess = (type) => {
         notification[type]({
             message: "Success",
@@ -82,19 +89,45 @@ function DSCS_NV() {
 
 
     useEffect(() => {
-        axios.get(`https://localhost:7011/api/API_Policies/api/policies`)
+        if(value === "All"){
+            axios.get(`https://localhost:7011/api/API_Policies/api/policies`)
             .then((res) => {
+    
                 setDSCS(res.data)
+    
             })
             .catch((err) => console.log(err))
+        }
+        else{
+            axios.post(`https://localhost:7011/api/API_Get_ChinhSach_info/API_Get_ChinhSach_Info_Active_Disable`,{status: value})
+            .then((res) => {
+    
+                setDSCS(res.data)
+    
+            })
+            .catch((err) => console.log(err))
+        }
+     
 
     }, [DanhSachCS])
+
+    const changeValue = (value) => {
+        axios.post(`https://localhost:7011/api/API_Get_ChinhSach_info/API_Get_ChinhSach_Info_Active_Disable`,{status: value.value})
+        .then((res) => {
+
+            setDSCS(res.data)
+
+        })
+        .catch((err) => console.log(err))
+    }
     return (
         <div className="DSCS_NV">
+            <Select className="Select" defaultValue={option[0]} options={option} onChange={(value) => setValue(value.value)}/>
             <div className="DSCS_NV_DS">
                 Danh sách các chính sách
             </div>
             <div className="DSCS_NV_DSCS">
+                
                 <div className="DSCS_NV_DSCS_LookUp">
                     <input className="DSCS_NV_DSCS_LookUp_Input" onChange={(value) => setChinhSach(value.target.value)} />
                     <FaMagnifyingGlass className="DSCS_NV_DSCS_LookUp_Icon" onClick={() => filtered()} />

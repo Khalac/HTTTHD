@@ -6,114 +6,93 @@
         height: 20vh;
         width: 100%;
     }
-    .TTKH_DSCS{
-        height: 70vh;
-        width: 60%;
-        background-color: #64CCC5;
-        border-radius: 20px;
-        margin-bottom: 2%;
-        margin-top: 2%;
-        .TTKH_DSCS_LookUp{
+   
+    .TTKH_Form{
+        height: 80vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        .TTKH_Form_Name{
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
-            height: 10%;
-            position: relative;
-            
-            .TTKH_DSCS_LookUp_Input{
-                width: 94%;
-                padding-left: 5%;
-                height: 85%;
-                border: none;
-                border-top-left-radius:19px;
-                border-top-right-radius: 19px;
-                font-family: 'Archivo Narrow', sans-serif;
-                &:focus{
-                    outline: none;
-                  }
-            }
-            .TTKH_DSCS_LookUp_Icon{
-                position: absolute;
-                background-color: #176B87;
-                height: 93%;
-                border-top-right-radius: 20px;
-                width: 7%;
-                right: 0.2%;
-                cursor: pointer;
-            }
-            
+            height: 20%;
+            font-family: 'Anton', sans-serif;
+            color: #176B87;
+            font-size: 150%;
         }
-        .TTKH_DSCS_DS{
+        .TTKH_Form_Detail{
+            display:flex;
+            height: 10%;
             width: 100%;
-            height: 90%;
-            display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
-            flex-direction: column;
-            overflow: hidden;
-            overflow-y: scroll;
-         
-            .TTKH_ChiTiet{
-                min-height: 30%;
-                width: 90%;
-                background-color: white;
-                margin-bottom: 5%;
-                margin-top: 5%;
-                border-radius: 20px;
-                padding-left: 3%;
-                position: relative;
-                .TTKH_ChiTiet_Ten{
-                    height: 50%;
-                    width: 100%;
+            flex-direction: row;
+            color: #053B50;
+            font-family: 'Archivo Narrow', sans-serif;
+            margin-bottom: 1.5%;
+            .TTKH_Form_Detail_Text{
+                width: 150px;
+                    height: 100%;
                     display: flex;
-                    
-                    align-items: center;
-                    font-family: 'Archivo Narrow', sans-serif;
-                    color: #000000;
-                }
-                .TTKH_ChiTiet_Des{
-                    height: 50%;
-                    width: 100%;
-                    font-family: 'Archivo Narrow', sans-serif;
-                    color: #918A8A;
-                }
-                .TTKH_ChiTiet_Status{
-                    position: absolute;
-                    right: 5%;
-                    top:15%;
-                    color: black;
-                    width: 100px;
-                    height: 30%;
-                
                    
-                    display: flex;
-                    justify-content: center;
                     align-items: center;
-                    font-family: 'Archivo Narrow', sans-serif;
-                   
-                }.TTKH_ChiTiet_Xem{
-                    position: absolute;
-                    right: 5%;
-                    bottom:15%;
-                    color: black;
-                    width: 100px;
-                    height: 30%;
-                    border: 2px solid #64CCC5;
-                   
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    border-radius: 10px;
-                    cursor: pointer;
-                    font-family: 'Archivo Narrow', sans-serif;
-                    &:hover{
-                        background-color:#64CCC5;
-                    }
-                }
-               
-                
+                font-family: 'Archivo Narrow', sans-serif;
+                color: #053B50;
             }
+            .TTKH_Form_Detail_Input{
+                height: 60%;
+                    width: 600px;
+                    border: 2px solid #64CCC5;
+                    padding-left: 2%;
+                    &:focus{
+                        outline: none;
+                    }
+            }
+        }
+        .TTKH_Form_Button_Huy{
+            position: absolute;
+            width: 7%;
+            height: 7%;
+            background-color: red;
+            bottom: 10%;
+            right: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            font-family: 'Archivo Narrow', sans-serif;
+            cursor: pointer;
+        }
+        .TTKH_Form_Button_Luu{
+            position: absolute;
+            width: 7%;
+            height: 7%;
+            background-color: #176B87;
+            bottom: 10%;
+            right: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            font-family: 'Archivo Narrow', sans-serif;
+            cursor: pointer;
+        }
+        .TTKH_Form_Button_DangXuat{
+            position: absolute;
+            width: 7%;
+            height: 7%;
+            border:2px solid #64CCC5;
+            bottom: 10%;
+            left: 32%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            font-family: 'Archivo Narrow', sans-serif;
+            cursor: pointer;
         }
     }
 

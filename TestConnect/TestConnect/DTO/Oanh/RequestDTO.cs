@@ -6,6 +6,8 @@
         public string Status { get; set; }
         public Guid IdChinhsach { get; set; }
         public Guid IdKhach { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
     }
 }
 
